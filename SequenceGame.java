@@ -4,27 +4,33 @@
 Alice and Bob are playing a game on a sequence a1,a2,...,an of length n . They move in turns and Alice moves first.  In the turn of each player, he or she should select an integer and remove it from the sequence. The game ends when there is no integer left in the sequence.  Alice wins if the sum of her selected integers is even; otherwise, Bob wins.  Your task is to determine who will win the game, if both players play optimally.
 */
 import java.util.*;
-public class Seq{
-    public static void main(String args[])
-    {
-        Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();
-        int[] a=new int[n];
-        int codd=0;
-        for(int i=0;i<n;i++)
-        {
-            a[i]=sc.nextInt();
-            if(a[i]%2!=0)
-            codd++;
+
+public class SequenceGame {  
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int numberOfElements;
+
+        while (!sc.hasNextInt()) {
+            System.out.println("Please enter a valid integer for the number of elements.");
+            sc.next(); 
         }
-        if(codd==0 || codd%2!=0)
-        System.out.println("ALICE");
-        else
-        System.out.println("BOB");
-    
+        numberOfElements = sc.nextInt();
+        int sequence[] = new int[numberOfElements]; 
+        int oddCount = 0;
+
+        for (int i = 0; i < numberOfElements; i++) {
+            while (!sc.hasNextInt()) {
+                System.out.println("Please enter a valid integer.");
+                sc.next(); 
+            }
+            sequence[i] = sc.nextInt();
+            if (sequence[i] % 2 != 0) {
+                oddCount++;
+            }
+        }
+        System.out.println((oddCount == 0 || oddCount % 2 != 0) ? "ALICE" : "BOB");
     }
 }
-
 /*   Algorithm
 
 * Read integer n (length of sequence) 
